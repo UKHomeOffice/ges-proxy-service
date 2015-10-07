@@ -41,13 +41,13 @@ object Build extends Build {
       libraryDependencies ++= Seq(
         "com.typesafe.akka" %% "akka-testkit" % "2.3.12" % Test withSources(),
         "io.spray" %% "spray-testkit" % "1.3.3" % Test withSources() excludeAll ExclusionRule(organization = "org.specs2"),
-        "com.github.fakemongo" % "fongo" % "1.6.2" % Test withSources(),
-        "uk.gov.homeoffice" %% "rtp-test-lib" % "1.0-SNAPSHOT" % Test classifier "tests" withSources()
+        "com.github.fakemongo" % "fongo" % "1.6.2" % Test withSources()
       ))
 
   val ioPath = "../rtp-io-lib"
   val akkaPath = "../rtp-akka-lib"
   val testPath = "../rtp-test-lib"
+  val rtpProxyPath = "../rtp-proxy-lib"
 
   val root = if (file(ioPath).exists && sys.props.get("jenkins").isEmpty) {
     println("=============")
@@ -57,10 +57,12 @@ object Build extends Build {
     val io = ProjectRef(file(ioPath), "rtp-io-lib")
     val akka = ProjectRef(file(akkaPath), "rtp-akka-lib")
     val test = ProjectRef(file(testPath), "rtp-test-lib")
+    val rtpProxy = ProjectRef(file(rtpProxyPath), "rtp-proxy-lib")
 
     proxy.dependsOn(io % "test->test;compile->compile")
          .dependsOn(akka % "test->test;compile->compile")
          .dependsOn(test % "test->test;compile->compile")
+         .dependsOn(rtpProxy % "test->test;compile->compile")
   } else {
     println("================")
     println("Build on Jenkins")
@@ -73,7 +75,9 @@ object Build extends Build {
         "uk.gov.homeoffice" %% "rtp-akka-lib" % "1.0-SNAPSHOT" withSources(),
         "uk.gov.homeoffice" %% "rtp-akka-lib" % "1.0-SNAPSHOT" % Test classifier "tests" withSources() excludeAll ExclusionRule(organization = "org.specs2"),
         "uk.gov.homeoffice" %% "rtp-test-lib" % "1.0-SNAPSHOT" withSources(),
-        "uk.gov.homeoffice" %% "rtp-test-lib" % "1.0-SNAPSHOT" % Test classifier "tests" withSources()
+        "uk.gov.homeoffice" %% "rtp-test-lib" % "1.0-SNAPSHOT" % Test classifier "tests" withSources(),
+        "uk.gov.homeoffice" %% "rtp-proxy-lib" % "1.0-SNAPSHOT" withSources(),
+        "uk.gov.homeoffice" %% "rtp-proxy-lib" % "1.0-SNAPSHOT" % Test classifier "tests" withSources()
       )
     )
   }
