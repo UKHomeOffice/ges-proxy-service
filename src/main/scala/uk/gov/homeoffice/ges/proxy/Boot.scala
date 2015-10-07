@@ -6,6 +6,7 @@ import grizzled.slf4j.Logging
 import uk.gov.homeoffice.configuration.HasConfig
 import uk.gov.homeoffice.console.Console
 import uk.gov.homeoffice.rtp.proxy._
+import uk.gov.homeoffice.rtp.proxy.ssl.{SSL, SSLProxyingConfiguration}
 
 object Boot extends App with HasConfig with Console with Logging {
   present("GES Proxy Service")
@@ -21,14 +22,23 @@ object Boot extends App with HasConfig with Console with Logging {
   }
 
   Try { config.getConfig("ssl") } match {
-    case Success(_) =>
-      info("Booting as SSL proxy")
-      val proxying = new Proxying with SSLProxyingConfiguration with HasConfig
-      proxying.proxy(proxiedServer, server)
+    case Success(_) => bootSSL
+    case _ => boot
+  }
 
-    case _ =>
-      info("Booting proxy")
-      val proxying = new Proxying with ProxyingConfiguration
-      proxying.proxy(proxiedServer, server)
+  def bootSSL = {
+    info("Booting as SSL proxy")
+
+    val proxying = new Proxying with SSLProxyingConfiguration {
+      implicit val sslContext = SSL.sslContext(config)
+    }
+
+    proxying.proxy(proxiedServer, server)
+  }
+
+  def boot = {
+    info("Booting proxy")
+    val proxying = new Proxying with ProxyingConfiguration
+    proxying.proxy(proxiedServer, server)
   }
 }
