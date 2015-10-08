@@ -32,6 +32,7 @@ assemblyMergeStrategy in assembly := {
   case PathList(ps @ _*) if ps.last endsWith ".dll" => MergeStrategy.discard
   case PathList(ps @ _*) if ps.last endsWith ".tooling" => MergeStrategy.discard
   case PathList(ps @ _*) if ps.last endsWith ".html" => MergeStrategy.discard
+  case PathList(ps @ _*) if ps.last endsWith "example.conf" => MergeStrategy.discard
   case x =>
     val oldStrategy = (assemblyMergeStrategy in assembly).value
     oldStrategy(x)
