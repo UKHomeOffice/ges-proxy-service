@@ -19,7 +19,7 @@ object Boot extends App with HasConfig with Console with Logging {
   implicit val system = ActorSystem(config.getString("spray.can.server.name"))
 
   sys.addShutdownHook {
-    system.shutdown()
+    system.terminate()
   }
 
   Try { config.getConfig("ssl") } match {
