@@ -1,6 +1,5 @@
-package temp
+package uk.gov.homeoffice.ges.proxy
 
-import java.io.FileInputStream
 import scala.concurrent.duration._
 import io.gatling.core.Predef._
 import io.gatling.core.scenario.Simulation
@@ -15,15 +14,14 @@ class AccessCodeForUSASimulation extends Simulation {
     .acceptEncodingHeader("gzip, deflate")
     .userAgentHeader("Mozilla/5.0 (Windows NT 5.1; rv:31.0) Gecko/20100101 Firefox/31.0")
 
-  val scn = scenario("Access Code for USA Simulation").repeat(1) {
+  val scn = scenario("Access Code for USA Simulation").repeat(100) {
     exec(http("Access Code for USA")
       .post("/soapservice/GesService")
       .body(RawFileBody("access-code-for-usa.xml"))
       .header("Content-Type", "text/xml;charset=UTF-8"))
   }
 
-  setUp(
-    //scn.inject(rampUsers(10) over (10 seconds))
-    scn.inject(atOnceUsers(1))
-  ).protocols(httpProtocol)
+  setUp {
+    scn.inject(rampUsers(10) over (10 seconds))
+  } protocols httpProtocol
 }

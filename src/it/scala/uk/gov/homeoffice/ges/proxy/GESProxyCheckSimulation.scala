@@ -1,4 +1,4 @@
-package temp
+package uk.gov.homeoffice.ges.proxy
 
 import scala.concurrent.duration._
 import io.gatling.core.Predef._
