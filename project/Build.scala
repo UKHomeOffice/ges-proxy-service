@@ -1,3 +1,4 @@
+import io.gatling.sbt.GatlingPlugin
 import sbt.Keys._
 import sbt._
 import spray.revolver.RevolverPlugin._
@@ -5,7 +6,7 @@ import spray.revolver.RevolverPlugin._
 object Build extends Build {
   val moduleName = "ges-proxy-service"
 
-  lazy val proxy = Project(id = moduleName, base = file("."))
+  lazy val proxy = Project(id = moduleName, base = file(".")).enablePlugins(GatlingPlugin)
     .configs(IntegrationTest)
     .settings(Revolver.settings)
     .settings(Defaults.itSettings: _*)
@@ -34,8 +35,10 @@ object Build extends Build {
         "com.typesafe.akka" %% "akka-slf4j" % "2.4.0" withSources()
       ),
       libraryDependencies ++= Seq(
-        "com.typesafe.akka" %% "akka-testkit" % "2.3.12" % Test withSources(),
-        "io.spray" %% "spray-testkit" % "1.3.3" % Test withSources() excludeAll ExclusionRule(organization = "org.specs2")
+        "com.typesafe.akka" %% "akka-testkit" % "2.3.12" % "test, it" withSources(),
+        "io.spray" %% "spray-testkit" % "1.3.3" % "test, it" withSources() excludeAll ExclusionRule(organization = "org.specs2"),
+        "io.gatling.highcharts" % "gatling-charts-highcharts" % "2.1.7" % "test, it" withSources(),
+        "io.gatling" % "gatling-test-framework" % "2.1.7" % "test, it" withSources()
       )
     )
 

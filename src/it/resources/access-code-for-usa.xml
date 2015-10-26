@@ -1,0 +1,23 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:GES="http://cbp.dhs.gov/GES/ges-exchange" xmlns:ns="http://niem.gov/niem/structures/2.0"
+                  xmlns:GES1="http://cbp.dhs.gov/GES/ges">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <GES-exchange:GESMessage s:id="_d02641b3-7a76-478a-9be8-5910c6e31f16"
+                                 xmlns:GES-exchange="http://cbp.dhs.gov/GES/ges-exchange"
+                                 xmlns:GES="http://cbp.dhs.gov/GES/ges" xmlns:nc="http://niem.gov/niem/niem-core/2.0"
+                                 xmlns:s="http://niem.gov/niem/structures/2.0"
+                                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <GES:SchemaVersion>2.1</GES:SchemaVersion>
+            <GES:Header xsi:nil="true"/>
+            <GES:Create s:id="_c0226367-8bd7-4c55-a5ec-2afdcc11f7d2">
+                <GES:GES s:id="_68c5335c-4727-455d-bee5-8e084110121b">
+                    <nc:Identification s:id="_29e68e75-7b57-4250-a7ec-3b732d5aac6c">
+                        <nc:IdentificationID>GEDUMMY42</nc:IdentificationID>
+                        <nc:IdentificationCategoryText>UKGET</nc:IdentificationCategoryText>
+                    </nc:Identification>
+                </GES:GES>
+            </GES:Create>
+        </GES-exchange:GESMessage>
+    </soapenv:Body>
+</soapenv:Envelope>

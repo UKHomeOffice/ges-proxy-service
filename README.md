@@ -89,3 +89,15 @@ For development, you can use ~re-start to go into "triggered restart" mode.
 Your application starts up and SBT watches for changes in your source (or resource) files.
 If a change is detected SBT recompiles the required classes and sbt-revolver automatically restarts your application. 
 When you press &lt;ENTER&gt; SBT leaves "triggered restart" and returns to the normal prompt keeping your application running.
+
+Gatling - Performance (Integration) Testing
+-----------------------------
+Performance tests are under src/it
+
+To execute Gatling performance integration tests from withing SBT:
+```bash
+gatling-it:test
+```
+
+Note that as Gatling tests are integration tests, then a ges-proxy-service must be running.
+When running the proxy locally, the global-entry-stub should be started, where both applications run in either SSL or non-SSL mode.
