@@ -18,7 +18,8 @@ class AccessCodeForUSASimulation extends Simulation {
     exec(http("Access Code for USA")
       .post("/soapservice/GesService")
       .body(RawFileBody("access-code-for-usa.xml"))
-      .header("Content-Type", "text/xml;charset=UTF-8"))
+      .header("Content-Type", "text/xml;charset=UTF-8")
+      .check(status.is(200)))
   }
 
   setUp {

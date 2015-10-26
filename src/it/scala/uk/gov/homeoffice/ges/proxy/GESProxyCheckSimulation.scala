@@ -16,7 +16,8 @@ class GESProxyCheckSimulation extends Simulation {
 
   val scn = scenario("GES Proxy Check Simulation").repeat(10) {
     exec(http("proxy-server GET")
-      .get("/proxy-server"))
+      .get("/proxy-server")
+      .check(status.is(200)))
       .pause(2 seconds)
   }
 
