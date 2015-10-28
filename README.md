@@ -91,7 +91,7 @@ If a change is detected SBT recompiles the required classes and sbt-revolver aut
 When you press &lt;ENTER&gt; SBT leaves "triggered restart" and returns to the normal prompt keeping your application running.
 
 Gatling - Performance (Integration) Testing
------------------------------
+-------------------------------------------
 Performance tests are under src/it
 
 To execute Gatling performance integration tests from withing SBT:
