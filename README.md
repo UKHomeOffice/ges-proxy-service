@@ -92,7 +92,7 @@ When you press &lt;ENTER&gt; SBT leaves "triggered restart" and returns to the n
 
 Gatling - Performance (Integration) Testing
 -------------------------------------------
-Performance tests are under src/it
+Performance tests are under src/it, and test reports are written to the "target" directory.
 
 To execute Gatling performance integration tests from withing SBT:
 ```bash
