@@ -22,7 +22,7 @@ object Boot extends App with HasConfig with Console with Logging {
     system.terminate()
   }
 
-  Try { config.getConfig("ssl") } match {
+  Try(config getConfig "ssl") match {
     case Success(_) =>
       info("Booting as SSL proxy")
       SSLProxying(sslContext(config)).proxy(proxiedServer, server)

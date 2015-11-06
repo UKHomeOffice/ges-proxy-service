@@ -1,6 +1,6 @@
 fork in run := true
 
-mainClass in (Compile, run) := Some("uk.gov.homeoffice.ges.proxy.Boot")
+mainClass := Some("uk.gov.homeoffice.ges.proxy.Boot")
 
 logLevel in assembly := Level.Info
 

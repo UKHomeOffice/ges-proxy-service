@@ -37,10 +37,11 @@ object Build extends Build {
       libraryDependencies ++= Seq(
         "com.typesafe.akka" %% "akka-testkit" % "2.3.12" % "test, it" withSources(),
         "io.spray" %% "spray-testkit" % "1.3.3" % "test, it" withSources() excludeAll ExclusionRule(organization = "org.specs2"),
-        "io.gatling.highcharts" % "gatling-charts-highcharts" % "2.1.7" % "test, it" withSources(),
-        "io.gatling" % "gatling-test-framework" % "2.1.7" % "test, it" withSources()
+        "io.gatling.highcharts" % "gatling-charts-highcharts" % "2.1.7" % IntegrationTest withSources(),
+        "io.gatling" % "gatling-test-framework" % "2.1.7" % IntegrationTest withSources()
       )
     )
+    .settings(run := (run in Runtime).evaluated) // Required to stop Gatling plugin overriding the default "run".
 
   val ioPath = "../rtp-io-lib"
   val akkaPath = "../rtp-akka-lib"
