@@ -29,7 +29,7 @@
         <suffixPattern>[GES PROXY SERVICE] %date{dd MMM yyyy HH:mm:ss} [%level] %logger{15} - %message%n%xException{10}</suffixPattern>
     </appender>
 
-    <root level="DEBUG">
+    <root level="INFO">
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="FILE"/>
         <appender-ref ref="SYSLOG"/>
