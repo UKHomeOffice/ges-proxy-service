@@ -12,7 +12,7 @@
 
 ### Fill in these bits:
 JAVA_OPTS="-Dsbt.log.noformat=true -Dconfig.file=/etc/ges-proxy-service/application.conf"
-START_CMD="\"java $JAVA_OPTS -jar /usr/share/ges-proxy-service/ges-proxy-service.jar\""
+START_CMD="\"java $JAVA_OPTS -jar /usr/share/ges-proxy-service/ges-proxy-service.jar >> /dev/null 2>&1 &\""
 NAME="ges-proxy-service"
 PGREP_STRING="/usr/share/ges-proxy-service/ges-proxy-service.jar"
 PID_FILE="/var/run/ges-proxy-service/ges-proxy-service.pid"
