@@ -1,4 +1,6 @@
 <configuration>
+    <jmxConfigurator/>
+
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>[GES PROXY SERVICE] %date{dd MMM yyyy HH:mm:ss} [%level] %logger{15} - %message%n%xException{10}</pattern>
