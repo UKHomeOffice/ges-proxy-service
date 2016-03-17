@@ -28,6 +28,7 @@ object Build extends Build {
       ivyScala := ivyScala.value map { _.copy(overrideScalaVersion = true) },
       resolvers ++= Seq(
         "Artifactory Snapshot Realm" at "http://artifactory.registered-traveller.homeoffice.gov.uk/artifactory/libs-snapshot-local/",
+        "Artifactory Release Realm" at "http://artifactory.registered-traveller.homeoffice.gov.uk/artifactory/libs-release-local/",
         "Typesafe Repository" at "http://repo.typesafe.com/typesafe/releases/",
         "Sonatype Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots/",
         "scalaz-bintray" at "https://dl.bintray.com/scalaz/releases",
@@ -37,10 +38,10 @@ object Build extends Build {
     .settings(libraryDependencies ++= {
       val `akka-version` = "2.4.0"
       val `gatling-version` = "2.1.7"
-      val `rtp-io-lib-version` = "1.6.0"
+      val `rtp-io-lib-version` = "1.7.0"
       val `rtp-test-lib-version` = "1.2.0"
-      val `rtp-akka-lib-version` = "1.5.0"
-      val `rtp-proxy-lib-version` = "1.2.0"
+      val `rtp-akka-lib-version` = "1.6.0"
+      val `rtp-proxy-lib-version` = "1.3.0"
 
       Seq(
         "com.typesafe.akka" %% "akka-slf4j" % `akka-version` withSources(),
