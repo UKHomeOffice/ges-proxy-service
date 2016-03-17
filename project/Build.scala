@@ -14,7 +14,7 @@ object Build extends Build {
     .settings(
       name := moduleName,
       organization := "uk.gov.homeoffice",
-      version := "1.2.0-SNAPSHOT",
+      version := "1.2.0",
       scalaVersion := "2.11.8",
       scalacOptions ++= Seq(
         "-feature",
@@ -37,10 +37,10 @@ object Build extends Build {
     .settings(libraryDependencies ++= {
       val `akka-version` = "2.4.0"
       val `gatling-version` = "2.1.7"
-      val `rtp-io-lib-version` = "1.2.0-SNAPSHOT"
-      val `rtp-test-lib-version` = "1.2.0-SNAPSHOT"
-      val `rtp-akka-lib-version` = "1.5.0-SNAPSHOT"
-      val `rtp-proxy-lib-version` = "1.2.0-SNAPSHOT"
+      val `rtp-io-lib-version` = "1.6.0"
+      val `rtp-test-lib-version` = "1.2.0"
+      val `rtp-akka-lib-version` = "1.5.0"
+      val `rtp-proxy-lib-version` = "1.2.0"
 
       Seq(
         "com.typesafe.akka" %% "akka-slf4j" % `akka-version` withSources(),
